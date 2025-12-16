@@ -3,6 +3,7 @@ import user.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class UserEvents {
 
@@ -41,5 +42,44 @@ public class UserEvents {
             }
         }
 
+    }
+
+    public static void usePoint(User user){
+        while (true) {
+            System.out.printf("""
+            ===============
+            잔여 포인트: %d 
+            1. 현재 체력: %d + 2 
+            2. 현재 공격력: %d + 1 
+            3. 현재 방어력: %d + 1  
+            4. 나가기
+            ===============
+            어떤 능력치를 올릴까요?
+            숫자 입력: """, user.getPoint() ,user.getHp(), user.getAtk(), user.getDf());
+            try{
+                int choice = Function.scan.nextInt();
+                if(user.getPoint() <= 0){
+                    System.out.println("사용 가능한 포인트가 없습니다.");
+                    break;
+                }
+                if(choice == 1){
+                    user.setHp(user.getHp() + 2);
+                } else if (choice == 2) {
+                    user.setAtk(user.getAtk() + 1);
+                } else if (choice == 3){
+                    user.setDf(user.getDf() + 1);
+                } else if (choice == 4) {
+                    break;
+                }else {
+                    System.out.println("1 ~ 4까지의 숫자를 입력해주세요.");
+                }
+                if( 0 < choice && choice < 4){
+                    user.setPoint(user.getPoint()-1);
+                }
+
+            }catch(InputMismatchException e){
+                System.out.println("숫자를 입력해주세요.");
+            }
+        }
     }
 }

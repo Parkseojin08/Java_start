@@ -9,8 +9,11 @@ public class User {
     private int exp;
     private int expPlus;
     private int hp;
+    private int maxHp;
     private int atk;
     private int df;
+    private int point;
+    private ArrayList<String> inventory;
 
      public User(){
         this.name = "";
@@ -18,8 +21,11 @@ public class User {
         this.exp = 0;
         this.expPlus = this.level * 100;
         this.hp = 0;
+        this.maxHp = 0;
         this.atk = 0;
-        this.df = 0;
+         this.df = 0;
+        this.point = 3;
+        this.inventory = new ArrayList<>();
     }
 
     public void setAll(String name, int hp, int atk, int df){
@@ -30,7 +36,15 @@ public class User {
     }
 
     public ArrayList getAll(){
-         ArrayList<String> lists = new ArrayList<>(Arrays.asList(name, String.valueOf(level), String.valueOf(exp), String.valueOf(expPlus),String.valueOf(hp), String.valueOf(atk), String.valueOf(df)));
+         ArrayList<String> lists = new ArrayList<>(Arrays.asList(
+                 name,
+                 String.valueOf(level),
+                 String.valueOf(exp),
+                 String.valueOf(expPlus),
+                 String.valueOf(hp),
+                 String.valueOf(atk),
+                 String.valueOf(df),
+                 String.valueOf(point)));
          return lists;
     }
 
@@ -63,6 +77,9 @@ public class User {
         this.df = df;
     }
 
+    public void setPoint(int point){
+         this.point = point;
+    }
 
     // 겟터
     public int getLevel() {
@@ -92,6 +109,8 @@ public class User {
     public int getHp() {
         return hp;
     }
+
+    public int getPoint(){return point;}
 
     public int getlevel() {
         return level;
