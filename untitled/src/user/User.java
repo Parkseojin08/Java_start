@@ -69,6 +69,9 @@ public class User {
         this.hp = hp;
     }
 
+    public void setMaxHp(int maxHp){
+        this.maxHp = maxHp;
+    };
     public void setAtk(int atk) {
         this.atk = atk;
     }
@@ -85,6 +88,11 @@ public class User {
     public int getLevel() {
         return level;
     }
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+
 
     public int getExp() {
         return exp;

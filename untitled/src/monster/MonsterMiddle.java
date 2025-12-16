@@ -8,5 +8,6 @@ public class MonsterMiddle extends Monster{
         this.hp = Function.ranInt(25, 15);
         this.atk = Function.ranInt(10,5);
         this.df = Function.ranInt(7, 4);
+        this.dropExp = Function.ranInt(40,20);
     }
 }

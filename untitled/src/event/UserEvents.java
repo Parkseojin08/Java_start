@@ -29,6 +29,7 @@ public class UserEvents {
                     String choice = Function.scan.nextLine().toLowerCase();
                     if (choice.equals("yes") || choice.equals("y")) {
                         user.setAll(userName, hp, atk, df);
+                        user.setMaxHp(hp);
                         System.out.println("캐릭터 생성을 종료합니다.");
                         System.out.println("===============");
                         break statsOur;
@@ -64,6 +65,7 @@ public class UserEvents {
                 }
                 if(choice == 1){
                     user.setHp(user.getHp() + 2);
+                    user.setMaxHp(user.getHp());
                 } else if (choice == 2) {
                     user.setAtk(user.getAtk() + 1);
                 } else if (choice == 3){
