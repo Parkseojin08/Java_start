@@ -7,6 +7,7 @@ public class User {
     private String name;
     private int level;
     private int exp;
+    private int expPlus;
     private int hp;
     private int atk;
     private int df;
@@ -15,6 +16,7 @@ public class User {
         this.name = "";
         this.level = 1;
         this.exp = 0;
+        this.expPlus = this.level * 100;
         this.hp = 0;
         this.atk = 0;
         this.df = 0;
@@ -26,41 +28,72 @@ public class User {
          this.atk = atk;
          this.df = df;
     }
+
     public ArrayList getAll(){
-         ArrayList<String> lists = new ArrayList<>(Arrays.asList(name, String.valueOf(level), String.valueOf(exp), String.valueOf(hp), String.valueOf(atk), String.valueOf(df)));
+         ArrayList<String> lists = new ArrayList<>(Arrays.asList(name, String.valueOf(level), String.valueOf(exp), String.valueOf(expPlus),String.valueOf(hp), String.valueOf(atk), String.valueOf(df)));
          return lists;
     }
-    // 겟터 셋터
 
-    public int getDf() {
-        return df;
+
+    // 셋터
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setDf(int df) {
-        this.df = df;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public int getAtk() {
-        return atk;
-    }
+    public void setExp(int exp){this.exp = exp;}
 
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
-    public int getHp() {
-        return hp;
+    public void setExpPlus(int expPlus) {
+        this.expPlus = expPlus;
     }
 
     public void setHp(int hp) {
         this.hp = hp;
     }
 
+    public void setAtk(int atk) {
+        this.atk = atk;
+    }
+
+    public void setDf(int df) {
+        this.df = df;
+    }
+
+
+    // 겟터
+    public int getLevel() {
+        return level;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+    public int getExpPlus() {
+        return expPlus;
+    }
+
+    public int getDf() {
+        return df;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getAtk() {
+        return atk;
     }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public int getlevel() {
+        return level;
+     }
 }

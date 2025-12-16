@@ -7,9 +7,16 @@ public class Start {
         User user = new User();
         while(true){
             boolean start = Message.startMessage();
-            UserEvents.choiceUserStats(user, start);
-            System.out.println(user.getAll());
-            break;
+            if(!start){
+                System.out.println("게임을 종료합니다.");
+                break;
+            }
+            while (true) {
+                UserEvents.choiceUserStats(user);
+                System.out.println(user.getAll());
+                Event.menuScreen(user);
+                break;
+            }
         }
     }
 }
