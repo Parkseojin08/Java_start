@@ -17,7 +17,7 @@ public class UserEvents {
             System.out.print("입력: ");
             String userName = Function.scan.nextLine();
             while (true) {
-                ArrayList<Integer> lists = new ArrayList<>(Arrays.asList(30,10,5,3));
+                ArrayList<Integer> lists = new ArrayList<>(Arrays.asList(30,20,10,5));
                 final int hp = Function.ranInt(lists.get(0), lists.get(1));
                 final int atk = Function.ranInt(lists.get(1), lists.get(2));
                 final int df = Function.ranInt(lists.get(2), lists.get(3));
