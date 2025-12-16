@@ -4,7 +4,6 @@ package monster;
 import event.Function;
 
 public class MonsterEasy extends Monster{
-
     public MonsterEasy(){
         this.name = "고블린";
         this.hp = Function.ranInt(20, 10);
