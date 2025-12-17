@@ -11,7 +11,6 @@ public class Function {
     public static int ranInt(int max, int min){
         LocalTime now = LocalTime.now();
         ran.setSeed(max+min+now.getNano());
-        int result = (ran.nextInt(max-min) + 1)+min;
-        return result;
+        return ran.nextInt(max-min) + min;
     }
 }

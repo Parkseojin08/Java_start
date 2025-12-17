@@ -5,6 +5,7 @@ import user.User;
 
 import monster.*;
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 
 public class Fight{
@@ -20,6 +21,24 @@ public class Fight{
 
                 user.setHp(user.getMaxHp());
                 user.setExp(user.getExp() + monster.getDropExp());
+
+                if( Function.ranInt(101,1) >= 70){
+                    int ranInts = Function.ranInt(monster.getDropItemLength(),0);
+                    HashMap<String, Integer> monsterItemList = monster.getDropItemAll();
+                    HashMap<String, Integer> userItemList = user.getInventoryItem();
+
+                    String dropItem = (String) monsterItemList.keySet().toArray()[ranInts];
+                    int ability = monsterItemList.get(dropItem);
+
+                    if(!userItemList.containsKey(dropItem)){
+                        user.setInventory(dropItem, ability);
+                    }
+                    System.out.printf("""
+                            ===============
+                            %s(이)가 %s를 드랍했습니다!
+                            ===============
+                            """,monster.getName(), dropItem);
+                }
 
                 if(user.getExp() >= user.getExpPlus()){
                     System.out.printf("""
@@ -45,7 +64,7 @@ public class Fight{
                 }else if(user.getHp() <= 0){
                     System.out.printf("""
                         ===============
-                        %s님이 %s에게 패배하였습니다.
+                        %s님이(이)가 %s님에게 패배하였습니다.
                         ===============""", user.getName(), monster.getName());
                     user.setHp(user.getMaxHp());
                     break;
@@ -53,10 +72,6 @@ public class Fight{
 
                 break;
             }
-
-
-
-
             System.out.printf("""
                             ==============================
                             이름: %s

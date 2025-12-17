@@ -24,7 +24,7 @@ public class Event {
                     MenuEvent.choiceMonster(user);
                 }
                 else if (choice == 2) {
-                    System.out.println("장비");
+                    MenuEvent.checkEquipment(user.getInventoryItem(), user);
                 }
                 else if (choice == 3) {
                     MenuEvent.checkStats(user.getAll(), user);

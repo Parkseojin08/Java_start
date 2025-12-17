@@ -1,7 +1,6 @@
 package user;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class User {
     private String name;
@@ -13,7 +12,13 @@ public class User {
     private int atk;
     private int df;
     private int point;
-    private ArrayList<String> inventory;
+
+    private String[] sword;
+    private String[] helmet;
+    private String[] armor;
+    private String[] bottom;
+
+    private HashMap<String, Integer> inventory;
 
      public User(){
         this.name = "";
@@ -23,10 +28,18 @@ public class User {
         this.hp = 0;
         this.maxHp = 0;
         this.atk = 0;
-         this.df = 0;
+        this.df = 0;
         this.point = 3;
-        this.inventory = new ArrayList<>();
-    }
+        this.inventory = new LinkedHashMap <>();
+        this.inventory.put("소 갑옷", 4);
+        this.inventory.put("소 헬멧", 2);
+        this.inventory.put("소 하의", 2);
+
+        this.sword = new String[2];
+        this.helmet = new String[2];
+        this.armor = new String[2];
+        this.bottom = new String[2];
+     }
 
     public void setAll(String name, int hp, int atk, int df){
          this.name = name;
@@ -35,7 +48,7 @@ public class User {
          this.df = df;
     }
 
-    public ArrayList getAll(){
+    public ArrayList<String> getAll(){
          ArrayList<String> lists = new ArrayList<>(Arrays.asList(
                  name,
                  String.valueOf(level),
@@ -48,6 +61,85 @@ public class User {
          return lists;
     }
 
+
+
+    // 장비관련
+    public void unEquipment(int choice,String name, String ability){
+        if(choice == 1){
+            sword[0] = "";
+            sword[1] = "";
+        } else if (choice == 2) {
+            helmet[0] = "";
+            helmet[1] = "";
+        } else if (choice == 3){
+            armor[0] = "";
+            armor[1] = "";
+        } else if (choice == 4) {
+            bottom[0] = "";
+            bottom[1] ="";
+        }else {
+            System.out.println("1 ~ 4의 숫자를 넣어주세요");
+        }
+    }
+
+
+    public void equipment(int choice,String name, String ability){
+         if(choice == 1){
+             sword[0] = name;
+             sword[1] = ability;
+         } else if (choice == 2) {
+             helmet[0] = name;
+             helmet[1] = ability;
+         } else if (choice == 3){
+             armor[0] = name;
+             armor[1] = ability;
+         } else if (choice == 4) {
+             bottom[0] = name;
+             bottom[1] = ability;
+         }else {
+             System.out.println("1 ~ 4의 숫자를 넣어주세요");
+         }
+    }
+
+    public HashMap<String, Integer> getInventoryItem(){
+        return inventory;
+    }
+
+    public void setInventory(String Item, Integer ability) {
+         inventory.put(Item, ability);
+    }
+
+    public String[] getSword() {
+        return sword;
+    }
+
+    public void setSword(String sword, int num) {
+        this.sword[num] = sword;
+    }
+
+    public String[] getBottom() {
+        return bottom;
+    }
+
+    public void setBottom(String bottom, int num) {
+        this.bottom[num] = bottom;
+    }
+
+    public String[] getArmor() {
+        return armor;
+    }
+
+    public void setArmor(String armor, int num) {
+        this.armor[num] = armor;
+    }
+
+    public String[] getHelmet() {
+        return helmet;
+    }
+
+    public void setHelmet(String helmet, int num) {
+        this.helmet[num] = helmet;
+    }
 
     // 셋터
 
