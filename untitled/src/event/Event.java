@@ -1,21 +1,14 @@
 package event;
 
 import user.User;
-
+import event.*;
 import java.util.InputMismatchException;
 
 public class Event {
     public static void menuScreen(User user){
         menu:
         while (true) {
-            System.out.printf("""
-                    ================
-                    이름: %s  레벨: %d 경험치: %d / %d
-                    1. 전투
-                    2. 장비
-                    3. 스텟
-                    4. 종료
-                    ================ \n""",user.getName(), user.getlevel(), user.getExp(), user.getExpPlus());
+            event.MenuEventSub.menuUi(user);
             try {
                 System.out.println("숫자를 선택해주세요! ");
                 System.out.print("입력: ");
@@ -24,7 +17,7 @@ public class Event {
                     MenuEvent.choiceMonster(user);
                 }
                 else if (choice == 2) {
-                    MenuEvent.checkEquipment(user.getInventoryItem(), user);
+                    MenuEvent.checkEquipment( user);
                 }
                 else if (choice == 3) {
                     MenuEvent.checkStats(user.getAll(), user);

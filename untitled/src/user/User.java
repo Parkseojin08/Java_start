@@ -35,10 +35,10 @@ public class User {
         this.inventory.put("소 헬멧", 2);
         this.inventory.put("소 하의", 2);
 
-        this.sword = new String[2];
-        this.helmet = new String[2];
-        this.armor = new String[2];
-        this.bottom = new String[2];
+        this.sword = new String[]{"",""};
+        this.helmet = new String[]{"",""};
+        this.armor = new String[]{"",""};
+        this.bottom = new String[]{"",""};
      }
 
     public void setAll(String name, int hp, int atk, int df){
@@ -64,41 +64,106 @@ public class User {
 
 
     // 장비관련
-    public void unEquipment(int choice,String name, String ability){
-        if(choice == 1){
-            sword[0] = "";
-            sword[1] = "";
-        } else if (choice == 2) {
-            helmet[0] = "";
-            helmet[1] = "";
-        } else if (choice == 3){
-            armor[0] = "";
-            armor[1] = "";
-        } else if (choice == 4) {
-            bottom[0] = "";
-            bottom[1] ="";
-        }else {
-            System.out.println("1 ~ 4의 숫자를 넣어주세요");
+
+    public void unEquipment(String choice, String ability){
+
+        switch (choice){
+            case "검":
+                if(!sword[0].isEmpty() && !sword[1].isEmpty()){
+                    this.atk += Integer.parseInt(ability);
+                    sword[0] = "";
+                    sword[1] = "";
+                    break;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+            case "헬멧":
+                if(!helmet[0].isEmpty() && !helmet[1].isEmpty()){
+                    this.df += Integer.parseInt(ability);
+                    helmet[0] = "";
+                    helmet[1] = "";
+                    break;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+
+            case "갑옷":
+                if(!armor[0].isEmpty() && !armor[1].isEmpty()){
+                    this.hp += Integer.parseInt(ability);
+                    armor[0] = "";
+                    armor[1] = "";
+                    break;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+
+            case "하의":
+                if(!bottom[0].isEmpty() && !bottom[1].isEmpty()){
+                    this.df += Integer.parseInt(ability);
+                    bottom[0] = "";
+                    bottom[1] = "";
+                    break;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+            default:
+                System.out.println("뭘 선택한거죠?");
+                break;
         }
     }
 
 
-    public void equipment(int choice,String name, String ability){
-         if(choice == 1){
-             sword[0] = name;
-             sword[1] = ability;
-         } else if (choice == 2) {
-             helmet[0] = name;
-             helmet[1] = ability;
-         } else if (choice == 3){
-             armor[0] = name;
-             armor[1] = ability;
-         } else if (choice == 4) {
-             bottom[0] = name;
-             bottom[1] = ability;
-         }else {
-             System.out.println("1 ~ 4의 숫자를 넣어주세요");
-         }
+    public void equipment(String choice,String name, String ability){
+        switch (choice){
+            case "검":
+                if(sword[0].isEmpty() && sword[1].isEmpty()){
+                    this.atk += Integer.parseInt(ability);
+                    sword[0] = name;
+                    sword[1] = ability;
+                    break;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+            case "헬멧":
+                if(helmet[0].isEmpty() && helmet[1].isEmpty()){
+                    this.df += Integer.parseInt(ability);
+                    helmet[0] = name;
+                    helmet[1] = ability;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+                break;
+
+            case "갑옷":
+                if(armor[0].isEmpty() && armor[1].isEmpty()){
+                    this.hp += Integer.parseInt(ability);
+                    armor[0] = name;
+                    armor[1] = ability;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+                break;
+            case "하의":
+                if(bottom[0].isEmpty() && bottom[1].isEmpty()){
+                    this.df += Integer.parseInt(ability);
+                    bottom[0] = name;
+                    bottom[1] = ability;
+                }else {
+                    System.out.println("장비 해제 후 창작해주세요");
+                    break;
+                }
+                break;
+            default:
+                System.out.println("뭘 선택한거죠?");
+                break;
+        }
     }
 
     public HashMap<String, Integer> getInventoryItem(){
@@ -110,6 +175,11 @@ public class User {
     }
 
     public String[] getSword() {
+         for(int i = 0; i < sword.length; i++){
+            if(sword[i] == null ||sword[i].isEmpty()){
+                sword[i] = "";
+            }
+         }
         return sword;
     }
 
@@ -118,6 +188,11 @@ public class User {
     }
 
     public String[] getBottom() {
+        for(int i = 0; i < bottom.length; i++){
+            if(bottom[i] == null || bottom[i].isEmpty()){
+                bottom[i] = "";
+            }
+        }
         return bottom;
     }
 
@@ -126,6 +201,11 @@ public class User {
     }
 
     public String[] getArmor() {
+        for(int i = 0; i < armor.length; i++){
+            if(armor[i] == null || armor[i].isEmpty()){
+                armor[i] = "";
+            }
+        }
         return armor;
     }
 
@@ -134,6 +214,11 @@ public class User {
     }
 
     public String[] getHelmet() {
+        for(int i = 0; i < helmet.length; i++){
+            if(helmet[i] == null || helmet[i].isEmpty()){
+                helmet[i] = "";
+            }
+        }
         return helmet;
     }
 

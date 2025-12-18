@@ -7,10 +7,10 @@ import java.util.HashMap;
 public class Boss extends Monster{
     public Boss(){
         this.name = "보스";
-        this.hp = Function.ranInt(20, 10);
-        this.atk = Function.ranInt(7,3);
-        this.df = Function.ranInt(5, 2);
-        this.dropExp = Function.ranInt(10,5);
+        this.hp = Function.ranInt(200, 100);
+        this.atk = Function.ranInt(40,20);
+        this.df = Function.ranInt(30, 15);
+        this.dropExp = Function.ranInt(1000,500);
         this.dropItem = new HashMap<>();
 
         this.dropItem.put("왕 검", 16);

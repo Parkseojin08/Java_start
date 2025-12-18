@@ -9,7 +9,7 @@ public class MonsterEasy extends Monster{
     public MonsterEasy(){
         this.name = "고블린";
         this.hp = Function.ranInt(30, 20);
-        this.atk = Function.ranInt(7,5);
+        this.atk = Function.ranInt(10,5);
         this.df = Function.ranInt(8, 5);
         this.dropExp = Function.ranInt(40,20);
 

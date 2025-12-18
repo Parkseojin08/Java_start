@@ -1,9 +1,7 @@
 package event;
 import user.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
+import java.util.*;
 
 public class UserEvents {
 
@@ -83,5 +81,48 @@ public class UserEvents {
                 System.out.println("숫자를 입력해주세요.");
             }
         }
+    }
+
+    public static void userLevelUp(User user){
+        System.out.printf("""
+                            =========================
+                            %s님 축하드립니다! 
+                            레벨업 하셨습니다!
+                            Level: %d -> %d
+                            exp: %d -> %d
+                            expMax: %d -> %d
+                            HP + 2, ATK + 1, DF + 1
+                            =========================
+                            """
+                ,user.getName(),
+                user.getlevel(), user.getlevel()+1,
+                user.getExp(), user.getExp() - user.getExpPlus(),
+                user.getExpPlus(), user.getExpPlus() * (user.getLevel() + 1));
+
+        user.setExp(user.getExp() - user.getExpPlus());
+        user.setLevel(user.getlevel() + 1);
+        user.setPoint(user.getPoint() + 3);
+        user.setExpPlus(user.getExpPlus() * user.getLevel());
+        user.setAll(user.getName(), user.getHp() + 2, user.getAtk() + 1, user.getDf() + 1);
+    }
+
+
+    public static HashMap<String, Integer> itemList(HashMap<String, Integer> inventory, String choiceItem){
+        System.out.println("=====================");
+        final int[] i = {1};
+        HashMap<String, Integer> input = new LinkedHashMap<>();
+        inventory.forEach((key, value) -> {
+            String[] whatAb = key.split(" ");
+            if(choiceItem.equals(whatAb[1]) || choiceItem.equals("ALL")){
+                System.out.printf("%d. %s: ability: %s + %d \n",
+                        i[0]++,
+                        key,
+                        (whatAb[1].equals("검") ? "ATK" : whatAb[1].equals("갑옷") ? "HP": "DF")
+                        ,value);
+                input.put(key,value);
+            }
+        });
+        System.out.println("=====================");
+        return input;
     }
 }
